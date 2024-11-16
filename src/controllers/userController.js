@@ -15,9 +15,9 @@ module.exports = () => {
     }
 
     controller.postUser = async (req, res) => {
-        const { name, email, password } = req.body;
+        const { name, email, password, rule } = req.body;
 
-        if (!name || !email || !password) {
+        if (!name || !email || !password || !rule) {
             return res.status(400).json({error: "All fields are required"});
         }
 
@@ -25,7 +25,7 @@ module.exports = () => {
 
         try {
             const connection = await connectionPromise();
-            const [result] = await connection.execute('INSERT INTO users (name, email, passwordHash) VALUES (?,?,?)', [name, email, passwordHash]);
+            const [result] = await connection.execute('INSERT INTO users (name, email, passwordHash, rule) VALUES (?,?,?,?)', [name, email, passwordHash, rule]);
             res.status(200).json({ message: 'User created successfully.' });
         } catch (error) {
             res.status(500).json({error: error.message});

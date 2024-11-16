@@ -1,0 +1,12 @@
+{
+  "free": {
+    "allLists": "false",
+    "customThemes": "false",
+    "shareLists": "false"
+  },
+  "premium": {
+    "allLists": "true",
+    "customThemes": "true",
+    "shareLists": "true"
+  }
+}
