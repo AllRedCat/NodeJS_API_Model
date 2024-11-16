@@ -10,12 +10,28 @@ router.get('/user', async (req, res, next) => {
     }
 });
 
+router.get('/user/:id', async (req, res, next) => {
+    try {
+        await controller.getUserById(req, res);
+    } catch (error) {
+        next(error);
+    }
+});
+
 router.post('/user', async (req, res, next) => {
    try {
        await controller.postUser(req, res, next);
    } catch (error) {
        next(error);
    }
+});
+
+router.put('/user/:id', async (req, res, next) => {
+    try {
+        await controller.putUser(req, res);
+    } catch (error) {
+        next(error);
+    }
 });
 
 module.exports = router;
