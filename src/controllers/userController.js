@@ -107,5 +107,18 @@ module.exports = () => {
         }
     }
 
+    controller.deleteUser = async (req, res) => {
+        const id = req.params.id;
+
+        try {
+            const connection = await connectionPromise();
+            await connection.execute('DELETE FROM users WHERE id = ?', [id]);
+
+            res.status(200).json({message: 'User deleted successfully.'});
+        } catch (error) {
+            res.status(500).json({error: error.message});
+        }
+    }
+
     return controller;
 };

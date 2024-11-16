@@ -34,4 +34,12 @@ router.put('/user/:id', async (req, res, next) => {
     }
 });
 
+router.delete('/user/:id', async (req, res, next) => {
+   try {
+       await controller.deleteUser(req, res);
+   } catch (error) {
+       next(error);
+   }
+});
+
 module.exports = router;
